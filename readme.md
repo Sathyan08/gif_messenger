@@ -1,5 +1,4 @@
 # Introduction
------------------------
 
 Gif Messenger is a simple Sinatra application that allows users to input a search term
 and a phone number.  The application will then use the `Giphy` API to obtain the url of
@@ -11,7 +10,6 @@ implemented the features that would make it a suitable production app.  In parti
 it lacks user authentication, a queueing system, and data persistence.
 
 # Running the App
------------------------
 
 Navigate to the app's directory and then run the following.
 
@@ -24,10 +22,8 @@ In your browser, visit `localhost:9292` to see the app in action.  Note that the
 not yet stylized.
 
 # Features to Add
------------------------
 
 ### User Authentication
------------------------
 
 User authentication would be important to application so that we could provide terms of
 service, track how users actually use the app, and persist the data that we need to
@@ -37,7 +33,6 @@ their text messages fail.
 I would use OmniAuth or Devise to implement user authentication.
 
 ### Queuing System
------------------------
 
 The application is already not very responsive because the controller needs to send a
 request to Twilio and receive a response.  Moreover, the application has no good way of
@@ -54,7 +49,6 @@ text to the user to notify him or her regarding the success and/or failure of th
 Twilio request.
 
 ### Data Persistence
------------------------
 
 In addition to user data, the application should probably persist some data regarding
 actual search results.  The application could easily persist the gif url that it obtains
