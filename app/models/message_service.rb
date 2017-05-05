@@ -1,16 +1,16 @@
-
+require './app/models/gif_url_service'
 
 class MessageService
   attr_reader :query, :phone_number
 
-  TWILIO_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).freeze
+  TWILIO_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   DEFAULT_BODY = "Hello"
 
   def self.execute(query:, phone_number:)
-    new(query: query, phone_number: phone_number).send
+    new(query: query, phone_number: phone_number).deliver
   end
 
-  def send
+  def deliver
     twilio_client.messages.create(
                                   to: formatted_phone_number,
                                   from: ENV['TWILIO_FROM_NUMBER'],
