@@ -16,8 +16,10 @@ RSpec.describe MessageService do
     before do
       allow(GifUrlService).to receive(:execute).and_return(gif_url)
       allow_any_instance_of(described_class).to receive(:twilio_client).and_return(twilio_spy)
+
       allow(twilio_spy).to receive(:messages).and_return(message_spy)
       allow(message_spy).to receive(:create)
+
       described_class.execute(query: query_string, phone_number: phone_number)
     end
 
