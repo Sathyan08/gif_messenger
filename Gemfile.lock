@@ -1,16 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.1.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (~> 0.7)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     builder (3.2.3)
     coderay (1.1.1)
-    concurrent-ruby (1.0.5)
     diff-lcs (1.3)
     dotenv (2.2.1)
     faraday (0.12.1)
@@ -29,12 +23,10 @@ GEM
     haml (5.0.1)
       temple (>= 0.8.0)
       tilt
-    i18n (0.8.1)
     jwt (1.5.6)
     launchy (2.4.3)
       addressable (~> 2.3)
     method_source (0.8.2)
-    minitest (5.10.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     oj (3.0.5)
@@ -65,22 +57,20 @@ GEM
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     slop (3.6.0)
     temple (0.8.0)
-    thread_safe (0.3.6)
     tilt (2.0.7)
     twilio-ruby (4.13.0)
       builder (>= 2.1.2)
       jwt (~> 1.0)
       multi_json (>= 1.3.0)
-    tzinfo (1.2.3)
-      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
   dotenv
   giphy
   haml
@@ -88,6 +78,7 @@ DEPENDENCIES
   rack-test
   rspec
   sinatra
+  sinatra-flash
   twilio-ruby
 
 BUNDLED WITH
