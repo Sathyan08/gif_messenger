@@ -97,7 +97,7 @@ RSpec.describe GifUrlService do
            {"url"=>"http://media3.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
             "width"=>"720",
             "height"=>"720",
-            "size"=>"7712339",
+            "size"=>"71233",
             "frames"=>"25",
             "mp4"=>"http://media3.giphy.com/media/JIX9t2j0ZTN9S/giphy.mp4",
             "mp4_size"=>"52042",
