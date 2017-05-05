@@ -7,7 +7,9 @@ RSpec.describe MessageService do
     let(:query_string) { "funny cat" }
     let(:phone_number) { "5551234" }
 
-    let(:gif_url) { "http://giphy.com/gifs/JIX9t2j0ZTN9S" }
+    let(:gif_id)  { "JIX9t2j0ZTN9S" }
+    let(:gif_url) { URI.join(GifUrlService::GIPHY_CDN_ROOT_PATH, "#{gif_id}.gif") }
+
     let(:twilio_spy) { double }
     let(:message_spy) { double }
 
