@@ -131,7 +131,7 @@ RSpec.describe GifUrlService do
     end
 
     let(:gif) { Giphy::Gif.new(gif_hash) }
-    let(:gif_url) { gif_hash["url"] }
+    let(:gif_url) { gif_hash["images"]["fixed_height_downsampled"]["url"] }
 
     let(:result) { [gif] }
     let(:query_string) { "funny cat" }
