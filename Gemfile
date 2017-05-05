@@ -1,5 +1,6 @@
 gem 'sinatra'
 gem 'giphy'
+gem 'twilio-ruby'
 gem 'pry'
 
 group :test do

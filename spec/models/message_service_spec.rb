@@ -7,7 +7,7 @@ RSpec.describe MessageService do
     let(:query_string) { "funny cat" }
     let(:phone_number) { "5551234" }
 
-    let(:gif_url) { gif_hash["url"] }
+    let(:gif_url) { "http://giphy.com/gifs/JIX9t2j0ZTN9S" }
     let(:twilio_spy) { double }
     let(:message_spy) { double }
 
@@ -15,9 +15,10 @@ RSpec.describe MessageService do
 
     before do
       allow(GifUrlService).to receive(:execute).and_return(gif_url)
-      allow(described_class).to receive(:twilio_client).and_return(twilio_spy)
+      allow_any_instance_of(described_class).to receive(:twilio_client).and_return(twilio_spy)
       allow(twilio_spy).to receive(:messages).and_return(message_spy)
       allow(message_spy).to receive(:create)
+      described_class.execute(query: query_string, phone_number: phone_number)
     end
 
     it "sends the Twilio client the url and the phone number" do
