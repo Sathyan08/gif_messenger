@@ -14,13 +14,13 @@ RSpec.describe MessageService do
     let(:modified_phone_number) { "+1" + phone_number }
 
     before do
-      allow(GifUrlService).to receive(:execute).and_return(gif_url)
+      allow(GifUrlService).to receive(:find_url).and_return(gif_url)
       allow_any_instance_of(described_class).to receive(:twilio_client).and_return(twilio_spy)
 
       allow(twilio_spy).to receive(:messages).and_return(message_spy)
       allow(message_spy).to receive(:create)
 
-      described_class.execute(query: query_string, phone_number: phone_number)
+      described_class.deliver(query: query_string, phone_number: phone_number)
     end
 
     it "sends the Twilio client the url and the phone number" do

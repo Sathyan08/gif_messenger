@@ -141,7 +141,7 @@ RSpec.describe GifUrlService do
     end
 
     it "returns a url string for the first gif in the search results" do
-      expect(described_class.execute(query_string)).to eq(gif_url)
+      expect(described_class.find_url(query_string)).to eq(gif_url)
     end
   end
 end

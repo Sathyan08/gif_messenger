@@ -1,5 +1,5 @@
 class GifUrlService
-  def self.execute(query)
+  def self.find_url(query)
     result = Giphy.search(query, limit: 1).first
     result.fixed_height_downsampled_image.url.to_s
   end

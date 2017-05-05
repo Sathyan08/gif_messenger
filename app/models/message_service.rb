@@ -1,13 +1,12 @@
 require './app/models/gif_url_service'
 
-class MessageService
-  attr_reader :query, :phone_number
+class MessageService < Struct.new(:query, :phone_number)
 
   TWILIO_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-  DEFAULT_BODY = "Hello"
+  DEFAULT_BODY = ""
 
-  def self.execute(query:, phone_number:)
-    new(query: query, phone_number: phone_number).deliver
+  def self.deliver(query:, phone_number:)
+    new(query, phone_number).deliver
   end
 
   def deliver
@@ -15,27 +14,24 @@ class MessageService
                                   to: formatted_phone_number,
                                   from: ENV['TWILIO_FROM_NUMBER'],
                                   body: DEFAULT_BODY,
-                                  media_url: GifUrlService.execute(query)
+                                  media_url: GifUrlService.find_url(query)
                                   )
   end
 
   private
 
-  def initialize(query:, phone_number:)
-    @query = query
-    @phone_number = phone_number
+  def formatted_phone_number
+    @formatted_phone_number ||= phone_number_prefix + phone_number
   end
 
-  def formatted_phone_number
-    @formatted_phone_number ||= begin
-      case phone_number
-      when phone_number.start_with?("+1")
-        phone_number
-      when phone_number.start_with?("1")
-        "+" + phone_number
-      else
-        "+1" + phone_number
-      end
+  def phone_number_prefix
+    case phone_number
+    when phone_number.start_with?("+1")
+      ""
+    when phone_number.start_with?("1")
+      "+"
+    else
+      "+1"
     end
   end
 
