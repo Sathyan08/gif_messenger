@@ -2,7 +2,7 @@ require 'spec_helper'
 require './app/models/message_service'
 
 RSpec.describe MessageService do
-  describe "#execute" do
+  describe "#deliver" do
 
     let(:query_string) { "funny cat" }
     let(:phone_number) { "5551234" }

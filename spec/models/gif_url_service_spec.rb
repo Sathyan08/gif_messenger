@@ -2,7 +2,7 @@ require 'spec_helper'
 require './app/models/gif_url_service'
 
 RSpec.describe GifUrlService do
-  describe "#execute" do
+  describe "#find_url" do
     let(:gif_hash) do
       {
         "type"=>"gif",
