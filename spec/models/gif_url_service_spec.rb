@@ -132,9 +132,14 @@ RSpec.describe GifUrlService do
 
     let(:gif) { Giphy::Gif.new(gif_hash) }
     let(:gif_url) { URI.join(described_class::GIPHY_CDN_ROOT_PATH, "#{result.first.id}.gif")}
-
-    let(:result) { [gif] }
     let(:query_string) { "funny cat" }
+
+    let(:result) do
+      gifs = []
+      25.times { gifs << gif.dup }
+
+      gifs
+    end
 
     before do
       allow(Giphy).to receive(:search).and_return(result)
