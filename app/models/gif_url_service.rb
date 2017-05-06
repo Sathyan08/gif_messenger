@@ -1,5 +1,5 @@
 class GifUrlService
-  GIPHY_CDN_ROOT_PATH = "http://i.giphy.com"
+  GIPHY_CDN_ROOT_PATH = "http://i.giphy.com".freeze
   SIZE_LIMIT = 500000
 
   def self.find_url(query)
