@@ -11,7 +11,8 @@ it lacks user authentication, a queueing system, and data persistence.
 
 # Running the App
 
-Navigate to the app's directory and then run the following.
+Navigate to the app's directory.  Create a `.env` file with valid values for the
+constants in the `.env.example` file.  Then run:
 
 ```
 bundle install
