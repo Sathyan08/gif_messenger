@@ -5,7 +5,7 @@ RSpec.describe MessageService do
   describe "#deliver" do
 
     let(:query_string) { "funny cat" }
-    let(:phone_number) { "5551234" }
+    let(:phone_number) { "(777)555-1234" }
 
     let(:gif) { build(:small_gif) }
     let(:gif_url) { URI.join(GifUrlService::GIPHY_CDN_ROOT_PATH, "#{gif.id}.gif") }
@@ -13,7 +13,7 @@ RSpec.describe MessageService do
     let(:twilio_spy) { double }
     let(:message_spy) { double }
 
-    let(:modified_phone_number) { "+1" + phone_number }
+    let(:formatted_phone_number) { "+17775551234" }
 
     before do
       allow(GifUrlService).to receive(:find_url).and_return(gif_url)
@@ -28,7 +28,7 @@ RSpec.describe MessageService do
     it "sends the Twilio client the url and the phone number" do
       expect(message_spy).to have_received(:create).with(
                                                           from: ENV['TWILIO_FROM_NUMBER'],
-                                                          to: modified_phone_number,
+                                                          to: formatted_phone_number,
                                                           body: MessageService::DEFAULT_BODY,
                                                           media_url: gif_url
                                                         )
