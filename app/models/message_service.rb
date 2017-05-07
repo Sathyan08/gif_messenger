@@ -24,6 +24,8 @@ class MessageService < Struct.new(:query, :phone_number)
     @formatted_phone_number ||= phone_number_prefix + standardized_phone_number
   end
 
+  # TODO: Handle cases where users input letters in the phone number and convert them
+  # to numbers
   def standardized_phone_number
     @standardized_phone_number ||= phone_number.gsub(/\D/, '')
   end
