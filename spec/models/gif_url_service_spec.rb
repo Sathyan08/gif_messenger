@@ -15,7 +15,7 @@ RSpec.describe GifUrlService do
       allow(Giphy).to receive(:search).and_return(gifs)
     end
 
-    it "returns a url string for the first gif in the search results" do
+    it "returns a url string for the first gif small enough to send over Twilio" do
       expect(described_class.find_url(query_string)).to eq(small_gif_url)
     end
   end
