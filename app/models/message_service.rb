@@ -25,18 +25,11 @@ class MessageService < Struct.new(:query, :phone_number)
   end
 
   def standardized_phone_number
-    phone_number.gsub(/\D/, '')
+    @standardized_phone_number ||=phone_number.gsub(/\D/, '')
   end
 
   def phone_number_prefix
-    case phone_number
-    when phone_number.start_with?("+1")
-      ""
-    when phone_number.start_with?("1")
-      "+"
-    else
-      "+1"
-    end
+    standardized_phone_number.start_with?("1") ? "+" : "+1"
   end
 
   def twilio_client
