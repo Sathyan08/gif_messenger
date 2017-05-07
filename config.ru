@@ -5,6 +5,6 @@ Bundler.require(:default)
 Bundler.require(Sinatra::Base.environment)
 
 require 'dotenv/load'
-require './server'
+require './app/server'
 
 run GifMessenger
