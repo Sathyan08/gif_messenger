@@ -5,7 +5,7 @@ RSpec.describe MessageService do
   describe "#deliver" do
 
     let(:query_string) { "funny cat" }
-    let(:phone_number) { "(777)555-1234" }
+    let(:phone_number) { "1(777)555-1234" }
 
     let(:gif) { build(:small_gif) }
     let(:gif_url) { URI.join(GifUrlService::GIPHY_CDN_ROOT_PATH, "#{gif.id}.gif") }

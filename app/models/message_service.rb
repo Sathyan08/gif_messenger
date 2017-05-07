@@ -25,7 +25,7 @@ class MessageService < Struct.new(:query, :phone_number)
   end
 
   def standardized_phone_number
-    @standardized_phone_number ||=phone_number.gsub(/\D/, '')
+    @standardized_phone_number ||= phone_number.gsub(/\D/, '')
   end
 
   def phone_number_prefix
