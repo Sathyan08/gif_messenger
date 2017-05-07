@@ -4,7 +4,7 @@ class GifMessenger < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
-  MESSAGE_SUCCESS_MESSAGE = "Message successfully queued".freeze
+  QUEUE_SUCCESS_MESSAGE = "Message successfully queued".freeze
 
   get '/' do
     haml :form
@@ -13,7 +13,7 @@ class GifMessenger < Sinatra::Base
   post '/request' do
     result = MessageService.deliver(query: params["search"], phone_number: params["phone_number"])
 
-    result.error_message ? flash[:warning] = result.error_message : flash[:info] = MESSAGE_SUCCESS_MESSAGE
+    result.error_message ? flash[:warning] = result.error_message : flash[:info] = QUEUE_SUCCESS_MESSAGE
     redirect "/"
   end
 end

@@ -1,9 +1,8 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.require
-
-ENV['RACK_ENV'] = 'development' unless ENV['RACK_ENV']
+Bundler.require(:default)
+Bundler.require(Sinatra::Base.environment)
 
 require 'dotenv/load'
 require './server'

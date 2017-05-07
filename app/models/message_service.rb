@@ -3,7 +3,7 @@ require './app/models/gif_url_service'
 class MessageService < Struct.new(:query, :phone_number)
 
   TWILIO_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-  DEFAULT_BODY = ""
+  DEFAULT_BODY = "".freeze
 
   def self.deliver(query:, phone_number:)
     new(query, phone_number).deliver
