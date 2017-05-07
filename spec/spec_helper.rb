@@ -17,11 +17,15 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 ENV['RACK_ENV'] = 'test'
-require 'dotenv/load'
 
+require 'dotenv/load'
 require "./config/environment"
 
+FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
+FactoryGirl.find_definitions
+
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   config.include Rack::Test::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

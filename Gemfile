@@ -7,6 +7,7 @@ gem 'sinatra'
 gem 'sinatra-flash'
 
 group :test do
+  gem 'factory_girl'
   gem "rspec"
   gem "rack-test"
 end
